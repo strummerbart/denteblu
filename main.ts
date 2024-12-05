@@ -9,6 +9,8 @@ bluetooth.onBluetoothDisconnected(function on_bluetooth_disconnected() {
 input.onButtonPressed(Button.A, function on_button_pressed_a() {
     if (connected == 1) {
         bluetooth.uartWriteString("Ciao da " + control.deviceName())
+        basic.clearScreen()
+        basic.showIcon(IconNames.SmallSquare)
     }
     
 })
@@ -19,6 +21,7 @@ bluetooth.onUartDataReceived(serial.delimiters(Delimiters.NewLine), function on_
         basic.clearScreen()
         basic.showArrow(ArrowNames.East)
         basic.pause(2000)
+        basic.clearScreen()
         basic.showString(uartDataReceived)
     }
     

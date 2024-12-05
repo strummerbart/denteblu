@@ -11,6 +11,8 @@ bluetooth.on_bluetooth_disconnected(on_bluetooth_disconnected)
 def on_button_pressed_a():
     if connected == 1:
         bluetooth.uart_write_string("Ciao da " + control.device_name())
+        basic.clear_screen()
+        basic.show_icon(IconNames.SMALL_SQUARE)        
 input.on_button_pressed(Button.A, on_button_pressed_a)
 
 def on_uart_data_received():
@@ -20,6 +22,7 @@ def on_uart_data_received():
         basic.clear_screen()
         basic.show_arrow(ArrowNames.EAST)
         basic.pause(2000)
+        basic.clear_screen()
         basic.show_string(uartDataReceived)
 bluetooth.on_uart_data_received(serial.delimiters(Delimiters.NEW_LINE),
     on_uart_data_received)
